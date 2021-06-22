@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './filter.css'
 
 import { filterGame, getGame, getAllGames, orderByGenre, orderByCreator, getGenres} from '../../actions/index.js'
-import Ordinances from '../Ordinances/Ordinances.js'
+import Ordinances from '../Ordinances/ordinances.js'
 
 export function Filtros(props){
 
