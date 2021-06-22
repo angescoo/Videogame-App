@@ -1,0 +1,27 @@
+.orderContainer {
+    display: flex;
+    color: white;
+    font-size: 13px;
+}
+
+.orderAlpha {
+    margin-left: 20px;
+}
+
+.selectAlpha{
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    padding: 5px;
+}
+
+.orderRating{
+    margin-left: 20px
+}
+
+.selectRating{
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    padding: 5px;
+}

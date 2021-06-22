@@ -1,0 +1,69 @@
+.gameDiv{
+    display: flex;
+    align-self: center;
+    width: 750px;
+    justify-content: space-around;
+    margin: auto;
+   
+}
+
+
+.videogame1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: center;
+  }
+  .divGame {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 210px;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    
+  }
+
+  .divGame:hover .genres {
+    visibility: visible;
+  }
+
+  .divGame:hover{
+    background-color: black;
+    border-radius: 20px;
+    box-shadow: 1px 1px white;
+  }
+
+  
+  .divGame:hover .favVg{
+    visibility: visible;
+  }
+
+  .btnBack{
+    background-color: rgb(214, 148, 6);
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  .btnNext{
+    background-color: rgb(214, 148, 6);
+    border-radius: 20px;
+    font-weight: bold;
+    
+  }
+  .currentPage{
+    background-color: rgb(214, 148, 6);
+    border-radius: 20px;
+    height: 30px;
+    font-weight: bold;
+  }
+
+  .paginationBtns{
+    padding-top: 15px;
+    height: 50px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+  }

@@ -1,0 +1,88 @@
+.cnt {
+    padding-top: 10px;
+}
+.form-container {
+align-self: center;
+margin: 20px 30px;
+display: flex;
+}
+
+/* .form-container button {
+    margin-left: 20px;
+} */
+.label {
+    padding-right: 10px;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.reset {
+    margin: auto;
+    background-color: darkred;
+    color: white;
+    border-radius: 20px;
+}
+
+.btnSearch{
+    border-radius: 20px;
+    background-color: rgb(214, 148, 6);
+    font-weight: bolder;
+}
+
+.inputSearch{
+    background-color: black;
+    border-radius: 20px;
+    padding: 5px;
+    color: white;
+    
+}
+
+.inputSearch:focus{
+ outline: none;
+    
+}
+
+.resultSearch{
+    /* background-color: black; */
+    align-self: center;
+    padding: 20px;
+   
+}
+
+.resultSearch:hover{
+    background-color: black;
+   
+}
+
+.resultIndividual{
+    display: flex;
+    justify-content:  space-between;
+
+}
+
+.resultIndividual button{
+    visibility: hidden;
+    background-color: green;
+}
+
+.resultIndividual:hover button{
+    visibility: visible;
+}
+
+.resultIndividual button:hover{
+    background-color: darkgreen;
+    color: white;
+}
+
+.resultIndividual:hover .linkResult{
+    color:orangered
+}
+
+.linkResult{
+    color: white;
+}
+

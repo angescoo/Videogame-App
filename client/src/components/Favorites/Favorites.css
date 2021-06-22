@@ -1,0 +1,70 @@
+.imgFav {
+    height: 150px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.favContainer {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    align-items: center;
+    color: white;
+    border: 1px solid white;
+}
+
+.favContainer:hover{
+    background-color: black;
+}
+
+.favBtn {
+    align-self: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(128, 18, 18);
+    color: white;
+    border: none;
+}
+
+.favBtn:hover{
+    background-color: rgb(95, 11, 11);
+}
+
+.divFavorite {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 700px;
+    margin-top: 50px;
+
+}
+
+.divFavorite ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-left: 250px;
+    width: 700px;
+}
+
+.favTitle{
+    color: white;
+    text-decoration: none;
+}
+
+.genFav{
+    color: white;
+    visibility: hidden;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.favContainer:hover .genFav{
+    visibility: visible;
+}

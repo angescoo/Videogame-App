@@ -1,0 +1,135 @@
+.App {
+  text-align: center;
+  
+}
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.imageVg {
+  height: 150px;
+  width: 200px;
+  align-self: center;
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.imageVg:hover {
+  background-color: crimson;
+ 
+}
+
+body {
+  /* background: #1e1333; */
+  background: url('https://static.vecteezy.com/system/resources/previews/001/338/564/non_2x/fluid-modern-purple-background-free-vector.jpg');
+  background-attachment: fixed;
+  background-size: auto;
+}
+
+.videogame {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+  
+}
+
+.gameContainer {
+  width: 950px;
+  margin: auto;
+  
+}
+
+.divContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 210px;
+  border: 1px solid #FFF;
+}
+
+
+.divContainer:hover{
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 1px 1px white;
+}
+
+.divContainer:hover .genres{
+  visibility: visible;
+}
+/* .favVg{
+  visibility: hidden;
+  background-color: green;
+  color: white;
+}
+
+
+.favVg:hover{
+  background-color: darkgreen;
+} */
+
+
+.NavContainer{
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+
+  height: 56px; */
+
+
+  /* flex-direction: row; */
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 20px; */
+    box-sizing: border-box;
+    position:sticky;
+    z-index: 1;
+
+  /* @media (min-height) */
+
+    
+}
+.ordContainer{
+  display: flex;
+}

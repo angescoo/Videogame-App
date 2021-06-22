@@ -1,0 +1,36 @@
+.arriba {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.imgDetail {
+    height: 250px;
+    width: 400px;
+    align-self: center;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.detail{
+    display: flex;
+    flex-direction: column;
+}
+
+.titleGame {
+    align-self: center;
+}
+
+.pContainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+
+
+.descriptionGame{
+    margin: 20px;
+}

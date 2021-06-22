@@ -1,0 +1,30 @@
+.filtros{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin: auto;
+    font-size: 13px;
+}
+
+.filterCreator{
+    margin-left: 20px;
+}
+
+.selectCreator{
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    padding: 5px;
+}
+
+.filterGenres{
+    margin-left: 20px
+}
+
+.selectGenres {
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    padding: 5px;
+}
