@@ -10,6 +10,7 @@ export function ConnectedList(props){
       <div className="divFavorite">   
         <ul>
           {
+            props.videogames.length === 0? <p>No favorites yet</p> :
           Array.isArray(props.videogames) && props.videogames.map((el, i) => (
             <div key={i} className="favContainer">
               <Link to={`/home/details/${el.id}`} className="favTitle"><h4 className="favTitle">{el.title}</h4></Link>
