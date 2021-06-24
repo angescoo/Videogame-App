@@ -42,33 +42,62 @@
   }
 
   .btnBack{
-    background-color: rgb(214, 148, 6);
+    /* background-color: rgb(214, 148, 6); */
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid white;
     border-radius: 20px;
+    cursor: pointer;
     font-weight: bold;
   }
   .btnNext{
-    background-color: rgb(214, 148, 6);
+    /* background-color: rgb(214, 148, 6); */
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid white;
     border-radius: 20px;
+    cursor: pointer;
     font-weight: bold;
     
   }
   .currentPage{
-    background-color: rgb(214, 148, 6);
+    /* background-color: rgb(214, 148, 6); */
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid white;
     border-radius: 20px;
-    height: 30px;
+    height: 30px;;
     font-weight: bold;
   }
 
   .paginationBtns{
     padding-top: 15px;
     height: 50px;
-    width: 50%;
-    margin: auto;
+    width: 25%;
     display: flex;
-    justify-content: space-around;
+    margin: auto;
+    justify-content: space-between;
   }
 
   .loading {
     height: 30px;
     width: 30px;
+  }
+
+  .range {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid white;
+    border-radius: 20px;
+    height: 30px;;
+    font-weight: bold;
+  }
+
+  .current {
+    background-color: rgb(214, 148, 6);;
+    color: black;
+    border: 1px solid white;
+    border-radius: 20px;
+    height: 30px;;
+    font-weight: bold;
   }

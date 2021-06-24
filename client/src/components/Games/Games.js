@@ -7,7 +7,7 @@ import { addGameFavorite } from '../../actions/index.js'
 export function Game(props){
 	return(
 		<div className="card">
-             <button alt="Add to favorite" className="favVg material-icons" onClick={() => props.addGameFavorite({title: props.name, id: props.id, img: props.img, genres: props.genres})}>star_outline</button>
+             <button alt="Add to favorite" className="favVg material-icons" onClick={() => props.addGameFavorite({title: props.name, id: props.id, img: props.img, genres: props.genres})}>star</button>
                 <Link to={`/home/details/${props.id}`} className="titleLink">
             <p className="title">
                 {props.name}                
