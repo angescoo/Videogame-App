@@ -80,8 +80,9 @@
   }
 
   .loading {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
+    margin: 40px auto;
   }
 
   .range {
@@ -100,4 +101,9 @@
     border-radius: 20px;
     height: 30px;;
     font-weight: bold;
+  }
+
+  .loadContainer {
+    display: flex;
+    margin: auto;
   }

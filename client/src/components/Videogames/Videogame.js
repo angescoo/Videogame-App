@@ -68,6 +68,7 @@ export function Videogame(props){
 			 })
 
 	return (
+		props.videogames.length === 0? <div className="loadContainer"><img src='https://media1.giphy.com/media/l4FGKbWgkhHVGXzTW/source.gif' className="loading"></img></div> :
 	<div className="allHome">
 
 {/*---------------PAGINADO BOTONES------------------*/}
@@ -100,9 +101,7 @@ export function Videogame(props){
 {/*--------------------Games-----------------------*/}
 <div className="contenedor">
 				<div className="gameDiv">
-					{
-						props.videogames.length === 0? <img src='https://media1.giphy.com/media/l4FGKbWgkhHVGXzTW/source.gif' className="loading"></img> : <div className="videogame1">{videogameData}</div>
-					}
+					<div className="videogame1">{videogameData}</div>
                 </div>
 
 {/*---------------PAGINADO BOTONES------------------*/}
