@@ -32,7 +32,7 @@ export function Videogame(props){
 		props.getAllGames()
 	},[])
 
-    const videogameData = vgames.map(game => {
+    let videogameData = vgames.length === 0? 'No games' : vgames.map(game => {
 
        return (<div className="divGame" key={game.id}>
             <Games

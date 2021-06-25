@@ -40,7 +40,7 @@ const initialState = {
       return{
         ...state,
         filteredVideogames: action.payload,
-
+        filterBy: 'alpha'
       }
     }
     if (action.type === GET_GENRES){
@@ -54,7 +54,7 @@ const initialState = {
       return{
         ...state,
         filteredVideogames: action.payload,
-        
+        filterBy: 'rating'
       }
     }
     if (action.type === FILTER_GAME){
