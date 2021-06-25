@@ -11,21 +11,20 @@ export function Ordenamientos(props){
 
 	function handleDispatchOrder(event) {
     if (event.target.value === ASD || event.target.value === DES) {
-		if(props.filterBy === "All"){
-			props.sort(event.target.value, props.videogames)
-		} else{
-			props.sort(event.target.value, props.filteredVideogames)
-		}
-			
+			if(props.filteredVideogames && props.filteredVideogames.length > 0){
+				props.sort(event.target.value, props.filteredVideogames)
+			} else {
+				props.sort(event.target.value, props.videogames)
+			}
 		    
     	}
   	}
   	function handleDispatchRating(event) {
     if (event.target.value === HASD || event.target.value === HDES) {
-		if(props.filterBy === "All"){
-			props.sortRating(event.target.value, props.videogames)
-		} else{
+		if(props.filteredVideogames && props.filteredVideogames.length > 0){
 			props.sortRating(event.target.value, props.filteredVideogames)
+		} else {
+			props.sortRating(event.target.value, props.videogames)
 		}
          
       		
@@ -62,7 +61,7 @@ export function Ordenamientos(props){
 function mapStateToProps(state){
 	return {
 		videogames: state.videogames,
-		filteredVideogames: state.videogames,
+		filteredVideogames: state.filteredVideogames,
 		filterBy: state.filterBy
 
 	}

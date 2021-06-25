@@ -92,6 +92,7 @@ console.log(games)
 }
 
 export function sortRating(orden, oRating){
+  console.log('que es esto')
   console.log(oRating)
 	let rating = [...oRating]
 
@@ -190,8 +191,8 @@ export const orderByGenre = (genres) => (dispatch, getState) => {
 
   
   export const orderByCreator = (source) => (dispatch, getState) => {
-    if (source === "All") {
-      const allVideogames = getState().videogames.slice();
+    if (source === "allGames") {
+      let allVideogames = getState().filteredVideogames.length === 0? getState().videogames.slice() : getState().filteredVideogames.slice()
       dispatch({
         type: "ORDER_BY_CREATOR",
         payload: {
@@ -200,15 +201,14 @@ export const orderByGenre = (genres) => (dispatch, getState) => {
         },
       });
     } else {
-      const videogames = getState()
-        .videogames.slice()
+      let videogameSource = getState().filteredVideogames.length === 0? getState().videogames.slice() : getState().filteredVideogames.slice()
         .filter(function (G) {
           return G.source === source
         });
       dispatch({
         type: "ORDER_BY_CREATOR",
         payload: {
-          videogames,
+          videogameSource,
           source,
         },
       });

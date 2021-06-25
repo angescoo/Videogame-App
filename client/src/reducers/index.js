@@ -93,9 +93,10 @@ if(action.type === "ORDER_BY_GENRE"){
 if(action.type === "ORDER_BY_CREATOR"){
   return {
     ...state,
-    filteredVideogames: action.payload.videogames,
+    filteredVideogames: action.payload.videogameSource,
     filterBy: action.payload.source,
-  }}
+  }
+}
   if(action.type === "RESET"){
     return {
       ...state,

@@ -49,7 +49,7 @@ export function Filtros(props){
       <div className="filterCreator"> 
         <p>Filter by Creator</p>
         <select className="selectCreator" onChange={(e) => handleCreator(e)} >
-          <option default>All</option>
+          <option value = "allGames">All Games</option>
           <option value="Api">Api videogames</option>
           <option value="Created">User-created videogames</option>
         </select>

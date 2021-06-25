@@ -19,7 +19,9 @@ export function Videogame(props){
      allPages.push(i)
    }
 
-   console.log(allPages)
+   console.log('prueba')
+   console.log(props.videogames)
+   console.log(props.filteredVideogames)
 	props.filterBy === "All"
     ? (vgames = props.videogames.slice(conteoInicial, conteoFinal))
     : (vgames = props.filteredVideogames.slice(conteoInicial, conteoFinal));
