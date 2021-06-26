@@ -22,15 +22,31 @@ display: flex;
 
 .reset {
     margin: auto;
-    background-color: darkred;
+    background-color: transparent;
     color: white;
+    border: 1px solid white;
+    /* background-color: darkred; */
     border-radius: 20px;
+}
+
+.reset:hover {
+    background-color: darkred;
+    cursor: pointer;
 }
 
 .btnSearch{
     border-radius: 20px;
-    background-color: rgb(214, 148, 6);
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    /* background-color: rgb(214, 148, 6); */
     font-weight: bolder;
+}
+
+.btnSearch:hover{
+    background-color: rgb(214, 148, 6);
+    color: black;
+    cursor: pointer;
 }
 
 .inputSearch{
