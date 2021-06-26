@@ -68,6 +68,8 @@
     border-radius: 20px;
     height: 30px;;
     font-weight: bold;
+    margin: 1px;
+    cursor: pointer;
   }
 
   .paginationBtns{
@@ -92,6 +94,7 @@
     border-radius: 20px;
     height: 30px;;
     font-weight: bold;
+    margin: 1px;
   }
 
   .current {
@@ -101,9 +104,20 @@
     border-radius: 20px;
     height: 30px;;
     font-weight: bold;
+    margin: 1px;
+  }
+
+  .paginationBtns1 {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
   }
 
   .loadContainer {
     display: flex;
     margin: auto;
   }
+
+  /* .uniquePage {
+    align-self: center;
+  } */
