@@ -137,12 +137,6 @@ export function filterGame(id) {
 	}
 }
 
-
-
-
-
-
-
 export function addGameFavorite(payload) {
     return { type: "ADD_GAME_FAVORITE", payload };
   }
@@ -152,19 +146,23 @@ export function addGameFavorite(payload) {
 
 }
   
-  export function searchGame(titulo) {
-    return function(dispatch) {
-      return fetch(`http://localhost:3001/videogames?name=${titulo}`)
-        .then(response => response.json())
-        .then(json => {
-          dispatch({ type: SEARCH_GAME, payload: json });
-        });
-    };
-  }
+  // export function searchGame(titulo) {
+  //   return function(dispatch) {
+  //     return fetch(`http://localhost:3001/videogames?name=${titulo}`)
+  //       .then(response => response.json())
+  //       .then(json => {
+  //         dispatch({ type: SEARCH_GAME, payload: json });
+  //       });
+  //   };
+  // }
 
   
-
-
+  export function searchGame(titulo) {
+    return function(dispatch, getState) {
+      const filteredGames = getState().videogames.slice().filter((game) => (game.name.toLowerCase()).includes(titulo))
+      dispatch({ type: SEARCH_GAME, payload: filteredGames });
+    }
+  }
 
 // --------------------
 

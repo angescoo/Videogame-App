@@ -66,7 +66,7 @@ const initialState = {
     if (action.type === "SEARCH_GAME") {
       return {
         ...state,
-        gameName: action.payload
+        filteredVideogames: action.payload
       };
   }
   if (action.type === "ADD_GAME_FAVORITE") {

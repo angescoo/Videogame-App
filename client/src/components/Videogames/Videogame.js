@@ -2,20 +2,22 @@ import React, { useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Games from '../Games/Games.js';
 import Pagination from '../Pagination/pagination.js';
-import { getGame, getAllGames, addGameFavorite} from '../../actions/index.js'
+import Filtros from '../Filters/filters.js';
+import { getGame, getAllGames, addGameFavorite, searchGame, resetSearch} from '../../actions/index.js'
 import './Videogame.css'
 import {Link} from 'react-router-dom';
 
 export function Videogame(props){
 
 	const [numeroPagina, setNumeroPagina] = useState(1); 
+	var [title, setTitle] = useState("")
 
 	const grupo = 15;
 	const conteoFinal = numeroPagina * grupo;
 	const conteoInicial = conteoFinal - grupo;
    let vgames;
 
-	props.filterBy === "All"
+	props.filterBy === "All" && title === ''
     ? (vgames = props.videogames.slice(conteoInicial, conteoFinal))
     : (vgames = props.filteredVideogames.slice(conteoInicial, conteoFinal));
 
@@ -26,6 +28,33 @@ export function Videogame(props){
 	useEffect(()=> {
 		props.getAllGames()
 	},[])
+
+	useEffect(()=> {
+		props.searchGame(title)
+	},[title])
+
+
+
+
+ function handleChange(event) {
+    setTitle(event.target.value)
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+
+  if(title.length === 0){
+    alert("Insert a valid game name")
+  } else{
+    props.searchGame(title)
+  }
+
+    
+
+  }
+ function handleClick(event){
+   props.resetSearch()
+  }
+
 
     let videogameData = vgames.length === 0? 'No games' : vgames.map(game => {
 
@@ -45,6 +74,27 @@ export function Videogame(props){
 	return (
 		props.videogames.length === 0? <div className="loadContainer"><img src='https://media1.giphy.com/media/l4FGKbWgkhHVGXzTW/source.gif' className="loading"></img></div> :
 	<div className="allHome">
+{/* ---------------------Buscador-------------------- */}
+<div className="searchContainer">
+        <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
+          <div>
+
+            <input
+            className="inputSearch"
+            placeholder="Search game"
+              type="text"
+              id="title"
+              autoComplete="off"
+              value={title}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <button className="btnSearch material-icons" type="submit">search</button>
+        </form>
+		</div>
+		<div className="ordContainer"> 
+		<Filtros></Filtros>
+		</div>
 
 {/*---------------PAGINADO BOTONES------------------*/}
 
@@ -81,7 +131,9 @@ function mapDispatchToProps(dispatch){
 	return {
         addGameFavorite: game => dispatch(addGameFavorite(game)),
 		getAllGames: () => dispatch(getAllGames()),
-		getGame: nombre => dispatch(getGame(nombre))
+		getGame: nombre => dispatch(getGame(nombre)),
+		searchGame: title => dispatch(searchGame(title)),
+		resetSearch: () => dispatch(resetSearch())
 	}
 }
 

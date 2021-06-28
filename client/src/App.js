@@ -22,13 +22,11 @@ function App() {
         <Route  path="/home" component={NavBar} />
           {/* <NavBar /> */}
           </div>
-          <Route exact path="/home" component={buscador} />
-          
-
+          {/* <Route exact path="/home" component={buscador} /> */}
           <Route path="/home/favs" component={Favorites} />
-         <div className="ordContainer"> 
+         {/* <div className="ordContainer"> 
          <Route exact path="/home" component={filters} />
-         </div>
+         </div> */}
           <Route exact path="/home" component={Videogame} />
           <Route exact path="/home/details/:id" component={detail}/>
           <Route exact path="/home/create" component={creategame}/>
