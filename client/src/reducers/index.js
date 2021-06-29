@@ -1,4 +1,14 @@
-import { GET_ALL_GAMES, GET_GAME_DETAIL, GET_GAME, SORT_GAMES, SORT_RATING, FILTER_GAME, GET_GENRES, SEARCH_GAME, ORDER_BY_CREATOR, ORDER_BY_GENRE } from '../actions/index.js'
+import { 
+  GET_ALL_GAMES,
+  GET_GAME_DETAIL,
+  GET_GAME, SORT_GAMES,
+  SORT_RATING,
+  FILTER_GAME,
+  GET_GENRES,
+  SEARCH_GAME,
+  ORDER_BY_CREATOR,
+  ORDER_BY_GENRE,
+  GET_PLATFORMS } from '../actions/index.js'
 
 
 
@@ -10,6 +20,7 @@ const initialState = {
   gameSorts:[],
   gameCreated:[],
 	genres:[],
+  platforms:[],
   filteredVideogames:[],
   filterBy:"All",
   };
@@ -47,6 +58,13 @@ const initialState = {
       return{
         ...state,
         genres: action.payload
+      
+      }
+    }
+    if (action.type === GET_PLATFORMS){
+      return{
+        ...state,
+        platforms: action.payload
       
       }
     }
@@ -90,6 +108,12 @@ if(action.type === "ORDER_BY_GENRE"){
     filteredVideogames: action.payload.videogameGenre,
         filterBy: action.payload.genre,
   }}
+  if(action.type === "ORDER_BY_PLATFORM"){
+    return {
+      ...state,
+      filteredVideogames: action.payload.videogamePlatform,
+          filterBy: action.payload.genre,
+    }}
 if(action.type === "ORDER_BY_CREATOR"){
   return {
     ...state,

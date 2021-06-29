@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getAllGames, getGameDetail, getGenres } from "../../actions/index.js";
+import { getAllGames, getGameDetail, getGenres, getPlatforms } from "../../actions/index.js";
 
 import "./creategame.css";
 
@@ -11,9 +11,12 @@ export function CreateGame(props) {
     rating: "",
     description: "",
     released: "",
-    platforms: "",
+    platforms: [],
     genres: [],
   });
+
+  let [show, setShow] = useState('false');
+  let [showPlatforms, setShowPlatforms] = useState('false');
 
   function handleChange(e) {
     setInput({
@@ -40,20 +43,51 @@ export function CreateGame(props) {
     if (e.target.checked) {
       setInput({
         ...input,
-        platforms: input.platforms.concat(" ",e.target.name)
+        platforms: [...input.platforms, e.target.id],
       });
     } else {
       setInput({
         ...input,
-        platforms: input.platforms.filter((name) => name !== e.target.name),
+        platforms: input.platforms.filter((id) => id !== e.target.id),
       });
     }
   }
 
+  function handleShowGenres(e) {
+    const active = show === 'false'? 'true' : 'false';
+    setShow(active)
+  }
+
+  function handleShowPlatforms(e) {
+    const active = showPlatforms === 'false'? 'true' : 'false';
+    setShowPlatforms(active)
+  }
+
+  // function handlePlatforms(e) {
+  //   if (e.target.checked) {
+  //     setInput({
+  //       ...input,
+  //       platforms: input.platforms.concat(" ",e.target.name)
+  //     });
+  //   } else {
+  //     setInput({
+  //       ...input,
+  //       platforms: input.platforms.filter((name) => name !== e.target.name),
+  //     });
+  //   }
+  // }
+
   useEffect(() => {
     props.getAllGames();
     props.getGenres();
+    props.getPlatforms();
   }, []);
+
+  // useEffect(() => {
+    
+  //   props.getPlatforms();
+  // }, [show]);
+
 
   const allPlatforms = ["Xbox One", "Xbox 360", "Xbox Series X", "PS5", "PS4", "PS3", "Nintendo Switch", "PC"]
 
@@ -149,8 +183,12 @@ export function CreateGame(props) {
         </div>
         <div className="ALL">
           <div>
-            <p className="texto">Genres</p>
-            <div>
+            <div className="show">
+            <label className="textGenres">Genres</label>
+            <button type='button' className="btnShow" onClick={(e) => handleShowGenres(e)}>{show === 'false'? '+' : '-'}</button>
+            </div>
+            {show === 'false'? null :
+              <div className="gen">
               {props.genres &&
                 props.genres.map((g) => {
                   return (
@@ -169,9 +207,17 @@ export function CreateGame(props) {
                   );
                 })}
             </div>
+            }
           </div>
           <div>
-              <label className="textPlatforms">Platforms</label>
+            <div className="show">
+          <label className="textPlatforms">Platforms</label>
+          <button type='button' className="btnShow" onClick={(e) => handleShowPlatforms(e)}>{showPlatforms === 'false'? '+' : '-'}</button>
+           </div>
+          
+          { showPlatforms === 'false'? null :
+            <div className="pform">
+              {/* <label className="textPlatforms">Platforms</label>
               <ul className="ulPla">
                 {allPlatforms.map((P) => (
                   <li className="liPla" key={P}>
@@ -185,7 +231,27 @@ export function CreateGame(props) {
                     <label name={P} className="labelText">{P}</label>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
+              
+              {props.platforms &&
+                props.platforms.map((p) => {
+                  return (
+                    <div key={p.id}>
+                      <input
+                        type="checkbox"
+                        name={p.name}
+                        value={p.name}
+                        id={p.id}
+                        onClick={(e) => handlePlatforms(e)}
+                      ></input>
+                      <label for={p.name} className="labelText">
+                        {p.name}
+                      </label>
+                    </div>
+                  );
+                })}
+            </div>
+            }
             </div>
         </div>
         <input className="cract" type="submit" value="Create Videogame" />
@@ -199,6 +265,7 @@ function mapStateToProps(state) {
     videogames: state.videogames,
     gameName: state.gameName,
     genres: state.genres,
+    platforms: state.platforms
   };
 }
 
@@ -207,6 +274,7 @@ function mapDispatchToProps(dispatch) {
     getAllGames: () => dispatch(getAllGames()),
     getGameDetail: (id) => dispatch(getGameDetail(id)),
     getGenres: () => dispatch(getGenres()),
+    getPlatforms:() => dispatch(getPlatforms())
   };
 }
 
