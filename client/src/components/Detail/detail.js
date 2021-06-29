@@ -31,6 +31,15 @@ if(props.gameDetail.genres){
  } 
      
      var platforms = []
+
+	 if(props.gameDetail.consoles){
+	   
+		for(let i = 0; i < props.gameDetail.consoles.length; i++) {
+		   platforms.push(props.gameDetail.consoles[i].name)
+		  } 
+	   
+	   
+		} 
  
  if(props.gameDetail.platforms){
 
