@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { connect } from "react-redux";
 import { getAllGames, getGameDetail, getGenres, getPlatforms } from "../../actions/index.js";
 
 import "./creategame.css";
+import {storage} from '../../firebase';
 
 export function CreateGame(props) {
   const [input, setInput] = useState({
@@ -11,12 +13,15 @@ export function CreateGame(props) {
     rating: "",
     description: "",
     released: "",
+    picture: "",
     platforms: [],
     genres: [],
   });
 
   let [show, setShow] = useState('false');
   let [showPlatforms, setShowPlatforms] = useState('false');
+  let [image, setImage] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   function handleChange(e) {
     setInput({
@@ -63,6 +68,31 @@ export function CreateGame(props) {
     setShowPlatforms(active)
   }
 
+  // const handlePictureUpload = () => {
+  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
+  //   uploadTask.on(
+  //       'state_changed',
+  //       (snapshot) => {},
+  //       (error) => {
+  //         console.log(error);
+  //       },
+  //       () => {
+  //         storage
+  //             .ref('images')
+  //             .child(image.name)
+  //             .getDownloadURL()
+  //             .then((u) => {
+  //               console.log(u)
+  //               setInput({...input, picture: u});
+  //             });
+  //       },
+  //   );
+  // };
+
+  const handlePictureChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   // function handlePlatforms(e) {
   //   if (e.target.checked) {
   //     setInput({
@@ -83,17 +113,39 @@ export function CreateGame(props) {
     props.getPlatforms();
   }, []);
 
-  // useEffect(() => {
-    
-  //   props.getPlatforms();
-  // }, [show]);
+
+  useEffect(() => {
+    if(image.length !== 0){
+    const uploadTask =  storage.ref(`images/${image.name}`).put(image);
+     uploadTask.on(
+        'state_changed',
+        (snapshot) => {},
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          storage
+              .ref('images')
+              .child(image.name)
+              .getDownloadURL()
+              .then((u) => {
+                setInput({...input, picture: u});
+              });
+        },
+    );
+
+    console.log(input.picture)
+  }
+  }, [image]);
 
 
   const allPlatforms = ["Xbox One", "Xbox 360", "Xbox Series X", "PS5", "PS4", "PS3", "Nintendo Switch", "PC"]
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(input);
+    console.log('probando link')
+    console.log(input.image)
+
     axios
       .post("http://localhost:3001/videogame", {
         name: input.name,
@@ -102,13 +154,18 @@ export function CreateGame(props) {
         platforms: input.platforms,
         rating: input.rating,
         released: input.released,
+        picture: input.picture
       })
       .then((e) => alert("Your video game has been created successfully!"))
       .catch((e) => console.log(e));
+      setRedirect(true);
   }
 
   return (
     <div className="contForm">
+      {
+            redirect === true && <Redirect to={`/home`}></Redirect>
+          }
       <div className="creat">
         <div className="asdd">
           <h1>Create Videogame</h1>
@@ -180,6 +237,14 @@ export function CreateGame(props) {
             onChange={handleChange}
             required
           ></input>
+        </div>
+
+        <div className="pictureContainer">
+          <p className="texto pic">Picture</p>
+          {/* <label for="btnPic" className="custom-file-upload">
+             Add picture
+          </label> */}
+          <input type="file" id="btnPic" className="btnPic" onChange={handlePictureChange} required />
         </div>
         <div className="ALL">
           <div>

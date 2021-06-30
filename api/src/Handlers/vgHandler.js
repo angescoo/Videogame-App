@@ -115,7 +115,7 @@ function getGame(req, res, next){
             released: response.data.released,
             rating: response.data.rating,
             platforms: response.data.platforms,
-            genres: response.data.genres
+            genres: response.data.genres,
         }))
         .catch(err => next(err))
     }
@@ -138,11 +138,9 @@ function getGame(req, res, next){
 // }
 
 async function addVideogame(req,res,next){
-    
+    console.log(req.body)
     const id = uuidv4();
     // const videogameBody = {...req.body, id};
-console.log(req.body.platforms)
-console.log(req.body.genres)
     try {
         const createdVideogame = await Videogame.create({
             id: id,
@@ -151,7 +149,8 @@ console.log(req.body.genres)
             rating: req.body.rating,
             released: req.body.released,
             platforms: req.body.platforms,
-            genres: req.body.genres
+            genres: req.body.genres,
+            background_image: req.body.picture
         })
         var videogameId = createdVideogame.id 
         var genreId = req.body.genres;
