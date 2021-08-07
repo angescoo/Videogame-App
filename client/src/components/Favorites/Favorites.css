@@ -10,11 +10,11 @@
     flex-direction: column;
     width: 230px;
     border-radius: 20px;
-    margin: auto;
     margin-bottom: 20px;
     align-items: center;
     color: white;
     border: 1px solid white;
+    margin-left: 10px;
 }
 
 .favContainer:hover{
@@ -40,17 +40,20 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 700px;
+
+    ;
     margin-top: 50px;
+    justify-content: space-evenly;
 
 }
 
 .divFavorite ul {
     display: flex;
     flex-wrap: wrap;
+    width: 750px;
+    justify-content: center;
     margin: auto;
-    margin-left: 250px;
-    width: 700px;
+
 }
 
 .favTitle{
@@ -67,4 +70,8 @@
 
 .favContainer:hover .genFav{
     visibility: visible;
+}
+
+.noFavorites {
+    color: white;
 }

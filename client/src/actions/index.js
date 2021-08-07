@@ -5,6 +5,7 @@ export const SORT_GAMES ='SORT_GAMES'
 export const SORT_RATING ='SORT_RATING'
 export const FILTER_GAME = 'FILTER_GAME'
 export const GET_GENRES = 'GET_GENRES'
+export const GET_PLATFORMS = 'GET_PLATFORMS'
 export const ASD = 'Order-A-Z';
 export const DES = 'Order-Z-A';
 export const HASD = 'RATING_ASD';
@@ -54,6 +55,15 @@ export function getGenres(){
 				dispatch({type: GET_GENRES, payload: json})
 		})
 	}}
+
+  export function getPlatforms(){
+    return function(dispatch){
+      return fetch('http://localhost:3001/platforms')
+        .then(response => response.json())
+        .then(json => {
+          dispatch({type: GET_PLATFORMS, payload: json})
+      })
+    }}
 
 
 export function sort(orden, ogames){
@@ -187,6 +197,26 @@ export const orderByGenre = (genres) => (dispatch, getState) => {
     });
   };
 
+  export const orderByPlatform = (platform) => (dispatch, getState) => {
+    let filteredGames = [];
+  
+    if (platform === "All") {
+      filteredGames = getState().videogames.slice();
+    } else {
+      filteredGames = getState()
+        .videogames.slice()
+        .filter((game) => 
+          (game.platforms || '').includes(platform)
+        )
+    };
+    dispatch({
+      type: "ORDER_BY_PLATFORM",
+      payload: {
+        platform,
+        videogamePlatform: filteredGames,
+      },
+    });
+  };
   
   export const orderByCreator = (source) => (dispatch, getState) => {
     if (source === "allGames") {

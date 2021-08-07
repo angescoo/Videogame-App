@@ -24,10 +24,13 @@ module.exports = (sequelize) => {
     rating: {
       type: DataTypes.STRING
     },
-    platforms: {
-      type: DataTypes.TEXT,
-      allowNull: false
+    background_image: {
+      type: DataTypes.TEXT
     }
+    // platforms: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false
+    // }
   });
 
   

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { connect } from "react-redux";
-import { getAllGames, getGameDetail, getGenres } from "../../actions/index.js";
+import { getAllGames, getGameDetail, getGenres, getPlatforms } from "../../actions/index.js";
 
 import "./creategame.css";
+import {storage} from '../../firebase';
 
 export function CreateGame(props) {
   const [input, setInput] = useState({
@@ -11,9 +13,15 @@ export function CreateGame(props) {
     rating: "",
     description: "",
     released: "",
-    platforms: "",
+    picture: "",
+    platforms: [],
     genres: [],
   });
+
+  let [show, setShow] = useState('false');
+  let [showPlatforms, setShowPlatforms] = useState('false');
+  let [image, setImage] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   function handleChange(e) {
     setInput({
@@ -40,26 +48,104 @@ export function CreateGame(props) {
     if (e.target.checked) {
       setInput({
         ...input,
-        platforms: input.platforms.concat(" ",e.target.name)
+        platforms: [...input.platforms, e.target.id],
       });
     } else {
       setInput({
         ...input,
-        platforms: input.platforms.filter((name) => name !== e.target.name),
+        platforms: input.platforms.filter((id) => id !== e.target.id),
       });
     }
   }
 
+  function handleShowGenres(e) {
+    const active = show === 'false'? 'true' : 'false';
+    setShow(active)
+  }
+
+  function handleShowPlatforms(e) {
+    const active = showPlatforms === 'false'? 'true' : 'false';
+    setShowPlatforms(active)
+  }
+
+  // const handlePictureUpload = () => {
+  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
+  //   uploadTask.on(
+  //       'state_changed',
+  //       (snapshot) => {},
+  //       (error) => {
+  //         console.log(error);
+  //       },
+  //       () => {
+  //         storage
+  //             .ref('images')
+  //             .child(image.name)
+  //             .getDownloadURL()
+  //             .then((u) => {
+  //               console.log(u)
+  //               setInput({...input, picture: u});
+  //             });
+  //       },
+  //   );
+  // };
+
+  const handlePictureChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  // function handlePlatforms(e) {
+  //   if (e.target.checked) {
+  //     setInput({
+  //       ...input,
+  //       platforms: input.platforms.concat(" ",e.target.name)
+  //     });
+  //   } else {
+  //     setInput({
+  //       ...input,
+  //       platforms: input.platforms.filter((name) => name !== e.target.name),
+  //     });
+  //   }
+  // }
+
   useEffect(() => {
     props.getAllGames();
     props.getGenres();
+    props.getPlatforms();
   }, []);
+
+
+  useEffect(() => {
+    if(image.length !== 0){
+    const uploadTask =  storage.ref(`images/${image.name}`).put(image);
+     uploadTask.on(
+        'state_changed',
+        (snapshot) => {},
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          storage
+              .ref('images')
+              .child(image.name)
+              .getDownloadURL()
+              .then((u) => {
+                setInput({...input, picture: u});
+              });
+        },
+    );
+
+    console.log(input.picture)
+  }
+  }, [image]);
+
 
   const allPlatforms = ["Xbox One", "Xbox 360", "Xbox Series X", "PS5", "PS4", "PS3", "Nintendo Switch", "PC"]
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(input);
+    console.log('probando link')
+    console.log(input.image)
+
     axios
       .post("http://localhost:3001/videogame", {
         name: input.name,
@@ -68,13 +154,18 @@ export function CreateGame(props) {
         platforms: input.platforms,
         rating: input.rating,
         released: input.released,
+        picture: input.picture
       })
       .then((e) => alert("Your video game has been created successfully!"))
       .catch((e) => console.log(e));
+      setRedirect(true);
   }
 
   return (
     <div className="contForm">
+      {
+            redirect === true && <Redirect to={`/home`}></Redirect>
+          }
       <div className="creat">
         <div className="asdd">
           <h1>Create Videogame</h1>
@@ -147,10 +238,22 @@ export function CreateGame(props) {
             required
           ></input>
         </div>
+
+        <div className="pictureContainer">
+          <p className="texto pic">Picture</p>
+          {/* <label for="btnPic" className="custom-file-upload">
+             Add picture
+          </label> */}
+          <input type="file" id="btnPic" className="btnPic" onChange={handlePictureChange} required />
+        </div>
         <div className="ALL">
           <div>
-            <p className="texto">Genres</p>
-            <div>
+            <div className="show">
+            <label className="textGenres">Genres</label>
+            <button type='button' className="btnShow" onClick={(e) => handleShowGenres(e)}>{show === 'false'? '+' : '-'}</button>
+            </div>
+            {show === 'false'? null :
+              <div className="gen">
               {props.genres &&
                 props.genres.map((g) => {
                   return (
@@ -169,9 +272,17 @@ export function CreateGame(props) {
                   );
                 })}
             </div>
+            }
           </div>
           <div>
-              <label className="textPlatforms">Platforms</label>
+            <div className="show">
+          <label className="textPlatforms">Platforms</label>
+          <button type='button' className="btnShow" onClick={(e) => handleShowPlatforms(e)}>{showPlatforms === 'false'? '+' : '-'}</button>
+           </div>
+          
+          { showPlatforms === 'false'? null :
+            <div className="pform">
+              {/* <label className="textPlatforms">Platforms</label>
               <ul className="ulPla">
                 {allPlatforms.map((P) => (
                   <li className="liPla" key={P}>
@@ -185,7 +296,27 @@ export function CreateGame(props) {
                     <label name={P} className="labelText">{P}</label>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
+              
+              {props.platforms &&
+                props.platforms.map((p) => {
+                  return (
+                    <div key={p.id}>
+                      <input
+                        type="checkbox"
+                        name={p.name}
+                        value={p.name}
+                        id={p.id}
+                        onClick={(e) => handlePlatforms(e)}
+                      ></input>
+                      <label for={p.name} className="labelText">
+                        {p.name}
+                      </label>
+                    </div>
+                  );
+                })}
+            </div>
+            }
             </div>
         </div>
         <input className="cract" type="submit" value="Create Videogame" />
@@ -199,6 +330,7 @@ function mapStateToProps(state) {
     videogames: state.videogames,
     gameName: state.gameName,
     genres: state.genres,
+    platforms: state.platforms
   };
 }
 
@@ -207,6 +339,7 @@ function mapDispatchToProps(dispatch) {
     getAllGames: () => dispatch(getAllGames()),
     getGameDetail: (id) => dispatch(getGameDetail(id)),
     getGenres: () => dispatch(getGenres()),
+    getPlatforms:() => dispatch(getPlatforms())
   };
 }
 

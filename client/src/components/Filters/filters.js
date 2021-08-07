@@ -2,7 +2,7 @@ import React, {useEffect, useState}  from 'react'
 import { connect } from 'react-redux';
 import './filter.css'
 
-import { filterGame, getGame, getAllGames, orderByGenre, orderByCreator, getGenres} from '../../actions/index.js'
+import { filterGame, getGame, getAllGames, orderByGenre, orderByCreator, getGenres, getPlatforms, orderByPlatform} from '../../actions/index.js'
 import Ordinances from '../Ordinances/ordinances.js'
 
 export function Filtros(props){
@@ -11,6 +11,7 @@ export function Filtros(props){
 
 	useEffect(()=> {
      props.getGenres()	
+	 props.getPlatforms()	
 	},[])
 
 	  function handleChange(e) {
@@ -22,6 +23,9 @@ export function Filtros(props){
       //Filter by Genre
   const handleFilter = (e) => {
     props.orderByGenre(e.target.value);
+  };
+  const handleFilterPlatforms = (e) => {
+    props.orderByPlatform(e.target.value);
   };
 
   //Filter by Creator
@@ -39,6 +43,17 @@ export function Filtros(props){
 				<option default>All</option>
 				{props.genres.map((G) => (
 				  <option key={G.id} value={G.name}>{G.name}</option>
+				))}
+			  </select>
+		</div>
+
+		<div className="filterGenres">
+			  
+			  <p>Filter by Platform</p>
+			  <select className="selectGenres" onChange={(e) => handleFilterPlatforms(e)}>
+				<option default>All</option>
+				{props.platforms.map((p) => (
+				  <option key={p.id} value={p.name}>{p.name}</option>
 				))}
 			  </select>
 		</div>
@@ -63,7 +78,8 @@ function mapStateToProps(state){
 	return {
 		videogames: state.videogames,
 		gameCreated: state.gameCreated,
-		genres: state.genres
+		genres: state.genres,
+		platforms: state.platforms
 
 	}
 }
@@ -74,8 +90,10 @@ function mapDispatchToProps(dispatch){
 		getGame: (a) => dispatch(getGame(a)),
 		getAllGames: () => dispatch(getAllGames()),
 		orderByGenre:(a) => dispatch(orderByGenre(a)),
+		orderByPlatform:(a) => dispatch(orderByPlatform(a)),
 		orderByCreator: (a) => dispatch(orderByCreator(a)),
-		getGenres:() => dispatch(getGenres())
+		getGenres:() => dispatch(getGenres()),
+		getPlatforms:() => dispatch(getPlatforms())
 	}
 }
 
