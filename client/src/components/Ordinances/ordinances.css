@@ -1,27 +1,27 @@
 .orderContainer {
     display: flex;
     color: white;
-    font-size: 13px;
+    font-size: 0.81rem;
 }
 
 .orderAlpha {
-    margin-left: 20px;
+    margin-left: 1.25rem;
 }
 
 .selectAlpha{
     background-color: black;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     color: white;
-    padding: 5px;
+    padding: 0.31rem;
 }
 
 .orderRating{
-    margin-left: 20px
+    margin-left: 1.25rem
 }
 
 .selectRating{
     background-color: black;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     color: white;
-    padding: 5px;
+    padding: 0.31rem;
 }

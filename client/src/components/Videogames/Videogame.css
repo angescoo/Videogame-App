@@ -1,7 +1,7 @@
 .gameDiv{
     display: flex;
     align-self: center;
-    width: 750px;
+    width: 46.8rem;
     justify-content: space-around;
     margin: auto;
    
@@ -17,13 +17,13 @@
   .divGame {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    width: 210px;
+    padding: 0.6rem;
+    width: 13.12rem;
     align-items: center;
     border: 1px solid #FFFFFF;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    margin: 5px;
+    border-radius: 1.25rem;
+    margin-bottom: 0.6rem;
+    margin: 0.31rem;
   }
 
   .divGame:hover .genres {
@@ -32,7 +32,7 @@
 
   .divGame:hover{
     background-color: black;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     box-shadow: 1px 1px white;
   }
 
@@ -46,35 +46,36 @@
     background-color: transparent;
     color: #FFFFFF;
     border: 1px solid white;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     cursor: pointer;
     font-weight: bold;
+    height: 1.87rem;
   }
   .btnNext{
     /* background-color: rgb(214, 148, 6); */
     background-color: transparent;
     color: #FFFFFF;
     border: 1px solid white;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     cursor: pointer;
     font-weight: bold;
-    
+    height: 1.87rem;   
   }
   .currentPage{
     /* background-color: rgb(214, 148, 6); */
     background-color: transparent;
     color: #FFFFFF;
     border: 1px solid white;
-    border-radius: 20px;
-    height: 30px;;
+    border-radius: 1.25rem;
+    height: 1.87rem;
     font-weight: bold;
     margin: 1px;
     cursor: pointer;
   }
 
   .paginationBtns{
-    padding-top: 15px;
-    height: 50px;
+    padding-top: 0.93rem;
+    height: 3.12rem;
     width: 25%;
     display: flex;
     margin: auto;
@@ -83,8 +84,8 @@
 
   .loading {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 3.12rem;
+    width: 3.12rem;
     margin: 15% auto;
   }
 
@@ -92,8 +93,8 @@
     background-color: transparent;
     color: #FFFFFF;
     border: 1px solid white;
-    border-radius: 20px;
-    height: 30px;;
+    border-radius: 1.25rem;
+    height: 1.87rem;;
     font-weight: bold;
     margin: 1px;
   }
@@ -102,8 +103,8 @@
     background-color: rgb(214, 148, 6);;
     color: black;
     border: 1px solid white;
-    border-radius: 20px;
-    height: 30px;;
+    border-radius: 1.25rem;
+    height: 1.87rem;;
     font-weight: bold;
     margin: 1px;
   }

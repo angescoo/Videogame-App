@@ -1,14 +1,14 @@
 .imgGame{
-height: 150px;
- width: 200px;
- border-radius: 20px;
+height: 9.37rem;
+ width: 13rem;
+ border-radius: 1.25rem;
 }
 
 .genres{
     visibility: hidden;
     color: white;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .card{
      
@@ -28,7 +28,7 @@ height: 150px;
     color: #FFFFFF;
     background-color: transparent;
     border: none;
-    font-size: 25px;
+    font-size: 1.56rem;
     align-self: flex-end;
   }
   
