@@ -205,8 +205,8 @@ export const orderByGenre = (genres) => (dispatch, getState) => {
     } else {
       filteredGames = getState()
         .videogames.slice()
-        .filter((game) =>
-          (game.platforms /*|| []*/).includes(platform)
+        .filter((game) => 
+          (game.platforms || '').includes(platform)
         )
     };
     dispatch({
