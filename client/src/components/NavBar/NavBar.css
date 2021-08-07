@@ -1,5 +1,5 @@
 .navbar {
-    height: 56px;
+    height: 3.5rem;
     width: 100%;
     top: 0;
     left: 0;
@@ -7,7 +7,7 @@
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-    padding: 0 20px;
+    padding: 0 1.25em;
     box-sizing: border-box;
     
     
@@ -39,7 +39,7 @@
 .list-item a {
     color: white;
     height: 100%;
-    padding: 16px 10px;
+    padding: 1em 0.62em;
     border-bottom: 4px solid transparent;
     text-decoration: none;
     display: flex;

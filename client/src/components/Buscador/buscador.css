@@ -1,9 +1,9 @@
 .cnt {
-    padding-top: 10px;
+    padding-top: 0.8rem;
 }
 .form-container {
 align-self: center;
-margin: 20px 30px;
+margin: 1.2rem 2rem;
 display: flex;
 }
 
@@ -11,7 +11,7 @@ display: flex;
     margin-left: 20px;
 } */
 .label {
-    padding-right: 10px;
+    padding-right: 0.8rem;
 }
 
 .searchContainer {
@@ -35,7 +35,7 @@ display: flex;
 }
 
 .btnSearch{
-    border-radius: 20px;
+    border-radius: 1.2rem;
     background-color: transparent;
     color: white;
     border: 1px solid white;
@@ -51,8 +51,8 @@ display: flex;
 
 .inputSearch{
     background-color: black;
-    border-radius: 20px;
-    padding: 5px;
+    border-radius: 1.2rem;
+    padding: 0.4rem;
     color: white;
     
 }
@@ -65,7 +65,7 @@ display: flex;
 .resultSearch{
     /* background-color: black; */
     align-self: center;
-    padding: 20px;
+    padding: 1.2rem;
    
 }
 

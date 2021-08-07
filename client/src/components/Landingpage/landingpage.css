@@ -8,15 +8,15 @@
   }
   .lndpage {
       text-align: center;
-      font-size: 51px;
+      font-size: 3.18rem;
   }
   
   .btnp{
-    padding: 5px 20px 5px ;
-    margin-left: 20px;
+    padding: 0.31em 1.25em;
+    margin-left: auto;
     font-size:  25px;
     color: black;
-    border-radius: 60px;
+    border-radius: 4em;
     transition: all 500ms ease;
     border: 2px solid black;
   

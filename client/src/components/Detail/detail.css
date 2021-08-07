@@ -6,11 +6,11 @@
 
 
 .imgDetail {
-    height: 250px;
-    width: 400px;
+    height: 15.62rem;
+    width: 25rem;
     align-self: center;
-    border-radius: 20px;
-    margin-top: 20px;
+    border-radius: 1.25rem;
+    margin-top: 1.25rem;
 }
 
 .detail{
@@ -25,12 +25,12 @@
 .pContainer{
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    font-size: 15px;
+    margin-left: 1.25rem;
+    font-size: 0.93rem;
 }
 
 
 
 .descriptionGame{
-    margin: 20px;
+    margin: 1.25rem;
 }
