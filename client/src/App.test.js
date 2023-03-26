@@ -4,9 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 test('renders learn react link', () => {
   render(
-  <BrowserRouter>
-  <App />
-  </BrowserRouter>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   );
   const linkElement = screen.getByText(/homepage/i);
   expect(linkElement).toBeInTheDocument();

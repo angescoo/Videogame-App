@@ -122,7 +122,7 @@ export function CreateGame(props) {
             // required="required"
             value={input.description}
             onChange={handleChange}
-            style={{ marginTop: "10px" }, { marginBottom: "5px" }}
+            style={{ marginTop: "10px", marginBottom: "5px" }}
             className="inpputs"
           />
         </div>
@@ -139,7 +139,7 @@ export function CreateGame(props) {
             <div>
               {props.genres && props.genres.map(g => {
                 return (
-                  <div>
+                  <div key={g.id}>
                     <input type="checkbox" name={g.name} value={g.name}></input>
                     <label for={g.name} className="texto"> {g.name}</label>
                   </div>
