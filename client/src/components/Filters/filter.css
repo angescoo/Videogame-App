@@ -1,5 +1,5 @@
-.filtros{
-	display: flex;
+.filtros {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -7,18 +7,18 @@
     font-size: 0.81rem;
 }
 
-.filterCreator{
+.filterCreator {
     margin-left: 1.25rem;
 }
 
-.selectCreator{
+.selectCreator {
     background-color: black;
     border-radius: 1.25rem;
     color: white;
     padding: 0.31rem;
 }
 
-.filterGenres{
+.filterGenres {
     margin-left: 1.25rem
 }
 

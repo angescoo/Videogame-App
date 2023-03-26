@@ -13,7 +13,7 @@
     margin-top: 1.25rem;
 }
 
-.detail{
+.detail {
     display: flex;
     flex-direction: column;
 }
@@ -22,7 +22,7 @@
     align-self: center;
 }
 
-.pContainer{
+.pContainer {
     display: flex;
     flex-direction: column;
     margin-left: 1.25rem;
@@ -31,6 +31,6 @@
 
 
 
-.descriptionGame{
+.descriptionGame {
     margin: 1.25rem;
 }

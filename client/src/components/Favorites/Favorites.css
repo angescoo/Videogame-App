@@ -17,7 +17,7 @@
     margin-left: 0.62rem;
 }
 
-.favContainer:hover{
+.favContainer:hover {
     background-color: black;
 }
 
@@ -31,7 +31,7 @@
     border: none;
 }
 
-.favBtn:hover{
+.favBtn:hover {
     background-color: rgb(95, 11, 11);
 }
 
@@ -54,19 +54,19 @@
 
 }
 
-.favTitle{
+.favTitle {
     color: white;
     text-decoration: none;
 }
 
-.genFav{
+.genFav {
     color: white;
     visibility: hidden;
     font-size: 0.75rem;
     font-weight: bold;
 }
 
-.favContainer:hover .genFav{
+.favContainer:hover .genFav {
     visibility: visible;
 }
 

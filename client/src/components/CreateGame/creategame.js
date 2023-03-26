@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getAllGames, getGameDetail, getGenres, getPlatforms } from "../../actions/index.js";
 
 import "./creategame.css";
-import {storage} from '../../firebase';
+import { storage } from '../../firebase';
 
 export function CreateGame(props) {
   const [input, setInput] = useState({
@@ -59,12 +59,12 @@ export function CreateGame(props) {
   }
 
   function handleShowGenres(e) {
-    const active = show === 'false'? 'true' : 'false';
+    const active = show === 'false' ? 'true' : 'false';
     setShow(active)
   }
 
   function handleShowPlatforms(e) {
-    const active = showPlatforms === 'false'? 'true' : 'false';
+    const active = showPlatforms === 'false' ? 'true' : 'false';
     setShowPlatforms(active)
   }
 
@@ -115,27 +115,25 @@ export function CreateGame(props) {
 
 
   useEffect(() => {
-    if(image.length !== 0){
-    const uploadTask =  storage.ref(`images/${image.name}`).put(image);
-     uploadTask.on(
+    if (image.length !== 0) {
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on(
         'state_changed',
-        (snapshot) => {},
+        (snapshot) => { },
         (error) => {
           console.log(error);
         },
         () => {
           storage
-              .ref('images')
-              .child(image.name)
-              .getDownloadURL()
-              .then((u) => {
-                setInput({...input, picture: u});
-              });
+            .ref('images')
+            .child(image.name)
+            .getDownloadURL()
+            .then((u) => {
+              setInput({ ...input, picture: u });
+            });
         },
-    );
-
-    console.log(input.picture)
-  }
+      );
+    }
   }, [image]);
 
 
@@ -143,8 +141,6 @@ export function CreateGame(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log('probando link')
-    console.log(input.image)
 
     axios
       .post("http://localhost:3001/videogame", {
@@ -158,14 +154,14 @@ export function CreateGame(props) {
       })
       .then((e) => alert("Your video game has been created successfully!"))
       .catch((e) => console.log(e));
-      setRedirect(true);
+    setRedirect(true);
   }
 
   return (
     <div className="contForm">
       {
-            redirect === true && <Redirect to={`/home`}></Redirect>
-          }
+        redirect === true && <Redirect to={`/home`}></Redirect>
+      }
       <div className="creat">
         <div className="asdd">
           <h1>Create Videogame</h1>
@@ -249,40 +245,40 @@ export function CreateGame(props) {
         <div className="ALL">
           <div>
             <div className="show">
-            <label className="textGenres">Genres</label>
-            <button type='button' className="btnShow" onClick={(e) => handleShowGenres(e)}>{show === 'false'? '+' : '-'}</button>
+              <label className="textGenres">Genres</label>
+              <button type='button' className="btnShow" onClick={(e) => handleShowGenres(e)}>{show === 'false' ? '+' : '-'}</button>
             </div>
-            {show === 'false'? null :
+            {show === 'false' ? null :
               <div className="gen">
-              {props.genres &&
-                props.genres.map((g) => {
-                  return (
-                    <div key={g.id}>
-                      <input
-                        type="checkbox"
-                        name={g.name}
-                        value={g.name}
-                        id={g.id}
-                        onClick={(e) => handleGeneres(e)}
-                      ></input>
-                      <label for={g.name} className="labelText">
-                        {g.name}
-                      </label>
-                    </div>
-                  );
-                })}
-            </div>
+                {props.genres &&
+                  props.genres.map((g) => {
+                    return (
+                      <div key={g.id}>
+                        <input
+                          type="checkbox"
+                          name={g.name}
+                          value={g.name}
+                          id={g.id}
+                          onClick={(e) => handleGeneres(e)}
+                        ></input>
+                        <label for={g.name} className="labelText">
+                          {g.name}
+                        </label>
+                      </div>
+                    );
+                  })}
+              </div>
             }
           </div>
           <div>
             <div className="show">
-          <label className="textPlatforms">Platforms</label>
-          <button type='button' className="btnShow" onClick={(e) => handleShowPlatforms(e)}>{showPlatforms === 'false'? '+' : '-'}</button>
-           </div>
-          
-          { showPlatforms === 'false'? null :
-            <div className="pform">
-              {/* <label className="textPlatforms">Platforms</label>
+              <label className="textPlatforms">Platforms</label>
+              <button type='button' className="btnShow" onClick={(e) => handleShowPlatforms(e)}>{showPlatforms === 'false' ? '+' : '-'}</button>
+            </div>
+
+            {showPlatforms === 'false' ? null :
+              <div className="pform">
+                {/* <label className="textPlatforms">Platforms</label>
               <ul className="ulPla">
                 {allPlatforms.map((P) => (
                   <li className="liPla" key={P}>
@@ -297,27 +293,27 @@ export function CreateGame(props) {
                   </li>
                 ))}
               </ul> */}
-              
-              {props.platforms &&
-                props.platforms.map((p) => {
-                  return (
-                    <div key={p.id}>
-                      <input
-                        type="checkbox"
-                        name={p.name}
-                        value={p.name}
-                        id={p.id}
-                        onClick={(e) => handlePlatforms(e)}
-                      ></input>
-                      <label for={p.name} className="labelText">
-                        {p.name}
-                      </label>
-                    </div>
-                  );
-                })}
-            </div>
+
+                {props.platforms &&
+                  props.platforms.map((p) => {
+                    return (
+                      <div key={p.id}>
+                        <input
+                          type="checkbox"
+                          name={p.name}
+                          value={p.name}
+                          id={p.id}
+                          onClick={(e) => handlePlatforms(e)}
+                        ></input>
+                        <label for={p.name} className="labelText">
+                          {p.name}
+                        </label>
+                      </div>
+                    );
+                  })}
+              </div>
             }
-            </div>
+          </div>
         </div>
         <input className="cract" type="submit" value="Create Videogame" />
       </form>
@@ -339,7 +335,7 @@ function mapDispatchToProps(dispatch) {
     getAllGames: () => dispatch(getAllGames()),
     getGameDetail: (id) => dispatch(getGameDetail(id)),
     getGenres: () => dispatch(getGenres()),
-    getPlatforms:() => dispatch(getPlatforms())
+    getPlatforms: () => dispatch(getPlatforms())
   };
 }
 

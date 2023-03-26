@@ -10,22 +10,22 @@ export class ConnectedList extends Component {
     return (
       <div className="pruebita">
         <h2>Favorites Videogames</h2>
-     
+
         <ul>
           {/* Aqui deberias poner tu lista de peliculas! */}
           {
-          Array.isArray(this.props.videogames) && this.props.videogames.map((el, i) => (
-            <div key={i} className="favContainer">
-             <img src={el.img} className="imgFav"/>
-             <Link to={`/home/details/${el.id}`}><p className="favTitle">{el.title}</p>  </Link>
-             <button className="favBtn" onClick={() => this.props.removeGameFavorite({title: el.Title, id: el.id, img: el.background_img})}>X</button>
-            </div>
-          )
-          )  
-        }
+            Array.isArray(this.props.videogames) && this.props.videogames.map((el, i) => (
+              <div key={i} className="favContainer">
+                <img src={el.img} className="imgFav" />
+                <Link to={`/home/details/${el.id}`}><p className="favTitle">{el.title}</p>  </Link>
+                <button className="favBtn" onClick={() => this.props.removeGameFavorite({ title: el.Title, id: el.id, img: el.background_img })}>X</button>
+              </div>
+            )
+            )
+          }
         </ul>
 
-        
+
       </div>
     );
   }

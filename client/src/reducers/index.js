@@ -47,7 +47,6 @@ const initialState = {
       }
     }
     if (action.type === SORT_GAMES){
-      console.log(action.payload)
       return{
         ...state,
         filteredVideogames: action.payload,

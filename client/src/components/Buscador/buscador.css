@@ -1,10 +1,11 @@
 .cnt {
     padding-top: 0.8rem;
 }
+
 .form-container {
-align-self: center;
-margin: 1.2rem 2rem;
-display: flex;
+    align-self: center;
+    margin: 1.2rem 2rem;
+    display: flex;
 }
 
 /* .form-container button {
@@ -17,7 +18,7 @@ display: flex;
 .searchContainer {
     display: flex;
     flex-direction: column;
-  
+
 }
 
 .reset {
@@ -34,7 +35,7 @@ display: flex;
     cursor: pointer;
 }
 
-.btnSearch{
+.btnSearch {
     border-radius: 1.2rem;
     background-color: transparent;
     color: white;
@@ -43,62 +44,61 @@ display: flex;
     font-weight: bolder;
 }
 
-.btnSearch:hover{
+.btnSearch:hover {
     background-color: rgb(214, 148, 6);
     color: black;
     cursor: pointer;
 }
 
-.inputSearch{
+.inputSearch {
     background-color: black;
     border-radius: 1.2rem;
     padding: 0.4rem;
     color: white;
-    
+
 }
 
-.inputSearch:focus{
- outline: none;
-    
+.inputSearch:focus {
+    outline: none;
+
 }
 
-.resultSearch{
+.resultSearch {
     /* background-color: black; */
     align-self: center;
     padding: 1.2rem;
-   
+
 }
 
-.resultSearch:hover{
+.resultSearch:hover {
     background-color: black;
-   
+
 }
 
-.resultIndividual{
+.resultIndividual {
     display: flex;
-    justify-content:  space-between;
+    justify-content: space-between;
 
 }
 
-.resultIndividual button{
+.resultIndividual button {
     visibility: hidden;
     background-color: green;
 }
 
-.resultIndividual:hover button{
+.resultIndividual:hover button {
     visibility: visible;
 }
 
-.resultIndividual button:hover{
+.resultIndividual button:hover {
     background-color: darkgreen;
     color: white;
 }
 
-.resultIndividual:hover .linkResult{
-    color:orangered
+.resultIndividual:hover .linkResult {
+    color: orangered
 }
 
-.linkResult{
+.linkResult {
     color: white;
 }
-

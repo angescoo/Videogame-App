@@ -1,141 +1,140 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Games from '../Games/Games.js';
 import Pagination from '../Pagination/pagination.js';
 import Filtros from '../Filters/filters.js';
-import { getGame, getAllGames, addGameFavorite, searchGame, resetSearch} from '../../actions/index.js'
+import { getGame, getAllGames, addGameFavorite, searchGame, resetSearch } from '../../actions/index.js'
 import './Videogame.css'
-import {Link} from 'react-router-dom';
 
-export function Videogame(props){
+export function Videogame(props) {
 
-	const [numeroPagina, setNumeroPagina] = useState(1); 
-	var [title, setTitle] = useState("")
+  const [numeroPagina, setNumeroPagina] = useState(1);
+  var [title, setTitle] = useState("")
 
-	const grupo = 15;
-	const conteoFinal = numeroPagina * grupo;
-	const conteoInicial = conteoFinal - grupo;
-   let vgames;
+  const grupo = 15;
+  const conteoFinal = numeroPagina * grupo;
+  const conteoInicial = conteoFinal - grupo;
+  let vgames;
 
-	props.filterBy === "All" && title === ''
+  props.filterBy === "All" && title === ''
     ? (vgames = props.videogames.slice(conteoInicial, conteoFinal))
     : (vgames = props.filteredVideogames.slice(conteoInicial, conteoFinal));
 
 
-	// const vgames = props.videogames.slice(conteoInicial, conteoFinal)
- 
-
-	useEffect(()=> {
-		props.getAllGames()
-	},[])
-
-	useEffect(()=> {
-		props.searchGame(title)
-	},[title])
+  // const vgames = props.videogames.slice(conteoInicial, conteoFinal)
 
 
+  useEffect(() => {
+    props.getAllGames()
+  }, [])
+
+  useEffect(() => {
+    props.searchGame(title)
+  }, [title])
 
 
- function handleChange(event) {
+
+
+  function handleChange(event) {
     setTitle(event.target.value)
   }
   function handleSubmit(event) {
     event.preventDefault();
 
-  if(title.length === 0){
-    alert("Insert a valid game name")
-  } else{
-    props.searchGame(title)
+    if (title.length === 0) {
+      alert("Insert a valid game name")
+    } else {
+      props.searchGame(title)
+    }
+
+
+
+  }
+  function handleClick(event) {
+    props.resetSearch()
   }
 
-    
 
-  }
- function handleClick(event){
-   props.resetSearch()
-  }
+  let videogameData = vgames.length === 0 ? 'No games' : vgames.map(game => {
+
+    return (<div className="divGame" key={game.id}>
+      <Games
+        name={game.name}
+        img={game.background_image}
+        id={game.id}
+        // genres={generos.join(" ")}
+        genres={game.genres}
+      />
 
 
-    let videogameData = vgames.length === 0? 'No games' : vgames.map(game => {
+    </div>)
+  })
 
-       return (<div className="divGame" key={game.id}>
-            <Games
-            name={game.name}
-            img={game.background_image}
-            id={game.id}
-            // genres={generos.join(" ")}
-			genres={game.genres}
-			/>
-       
+  return (
+    props.videogames.length === 0 ? <div className="loadContainer"><img src='https://media1.giphy.com/media/l4FGKbWgkhHVGXzTW/source.gif' className="loading"></img></div> :
+      <div className="allHome">
+        {/* ---------------------Buscador-------------------- */}
+        <div className="searchContainer">
+          <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
+            <div>
 
-        </div>)
-        })
+              <input
+                className="inputSearch"
+                placeholder="Search game"
+                type="text"
+                id="title"
+                autoComplete="off"
+                value={title}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <button className="btnSearch material-icons" type="submit">search</button>
+          </form>
+        </div>
+        <div className="ordContainer">
+          <Filtros></Filtros>
+        </div>
 
-	return (
-		props.videogames.length === 0? <div className="loadContainer"><img src='https://media1.giphy.com/media/l4FGKbWgkhHVGXzTW/source.gif' className="loading"></img></div> :
-	<div className="allHome">
-{/* ---------------------Buscador-------------------- */}
-<div className="searchContainer">
-        <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
-          <div>
+        {/*---------------PAGINADO BOTONES------------------*/}
 
-            <input
-            className="inputSearch"
-            placeholder="Search game"
-              type="text"
-              id="title"
-              autoComplete="off"
-              value={title}
-              onChange={(e) => handleChange(e)}
-            />
+        <div className="paginationBtns">
+          <Pagination allVideogames={props.filteredVideogames.length > 0 || props.filterBy !== 'All' ? props.filteredVideogames : props.videogames} page={numeroPagina} setPage={setNumeroPagina}></Pagination>
+        </div>
+
+
+        {/*--------------------Games-----------------------*/}
+        <div className="contenedor">
+          <div className="gameDiv">
+            <div className="videogame1">{videogameData}</div>
           </div>
-          <button className="btnSearch material-icons" type="submit">search</button>
-        </form>
-		</div>
-		<div className="ordContainer"> 
-		<Filtros></Filtros>
-		</div>
 
-{/*---------------PAGINADO BOTONES------------------*/}
+          {/*---------------PAGINADO BOTONES------------------*/}
 
-			<div className="paginationBtns">
-                  <Pagination allVideogames={props.filteredVideogames.length > 0 || props.filterBy !== 'All'? props.filteredVideogames : props.videogames} page={numeroPagina} setPage={setNumeroPagina}></Pagination>
-	        </div>
-		
-
-{/*--------------------Games-----------------------*/}
-<div className="contenedor">
-				<div className="gameDiv">
-					<div className="videogame1">{videogameData}</div>
-                </div>
-
-{/*---------------PAGINADO BOTONES------------------*/}
-
-            <div className="paginationBtns">
-                  <Pagination allVideogames={props.filteredVideogames.length > 0 || props.filterBy !== 'All'? props.filteredVideogames : props.videogames} page={numeroPagina} setPage={setNumeroPagina}></Pagination>
-	        </div>
-			</div>
-		</div>
-	)
+          <div className="paginationBtns">
+            <Pagination allVideogames={props.filteredVideogames.length > 0 || props.filterBy !== 'All' ? props.filteredVideogames : props.videogames} page={numeroPagina} setPage={setNumeroPagina}></Pagination>
+          </div>
+        </div>
+      </div>
+  )
 }
 
-function mapStateToProps(state){
-	return {
-		videogames: state.videogames,
-		filterBy: state.filterBy,
-		filteredVideogames: state.filteredVideogames,
-	}
+function mapStateToProps(state) {
+  return {
+    videogames: state.videogames,
+    filterBy: state.filterBy,
+    filteredVideogames: state.filteredVideogames,
+  }
 }
 
-function mapDispatchToProps(dispatch){
-	return {
-        addGameFavorite: game => dispatch(addGameFavorite(game)),
-		getAllGames: () => dispatch(getAllGames()),
-		getGame: nombre => dispatch(getGame(nombre)),
-		searchGame: title => dispatch(searchGame(title)),
-		resetSearch: () => dispatch(resetSearch())
-	}
+function mapDispatchToProps(dispatch) {
+  return {
+    addGameFavorite: game => dispatch(addGameFavorite(game)),
+    getAllGames: () => dispatch(getAllGames()),
+    getGame: nombre => dispatch(getGame(nombre)),
+    searchGame: title => dispatch(searchGame(title)),
+    resetSearch: () => dispatch(resetSearch())
+  }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Videogame)
+export default connect(mapStateToProps, mapDispatchToProps)(Videogame)
 
