@@ -55,8 +55,8 @@
 }
 
 body {
-  /* background: #1e1333; */
-  background: url('https://static.vecteezy.com/system/resources/previews/001/338/564/non_2x/fluid-modern-purple-background-free-vector.jpg');
+  background: #1e1333;
+  /* background: url('https://static.vecteezy.com/system/resources/previews/001/338/564/non_2x/fluid-modern-purple-background-free-vector.jpg'); */
   background-attachment: fixed;
   background-size: auto;
 }

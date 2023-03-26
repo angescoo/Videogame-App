@@ -21,10 +21,12 @@ export function Videogame(props) {
     : (vgames = props.filteredVideogames.slice(conteoInicial, conteoFinal));
 
   useEffect(() => {
+    console.log('revisar')
     props.getAllGames()
-  }, [props])
+  }, [])
 
   useEffect(() => {
+    console.log('revisar otro')
     props.searchGame(title)
   }, [title])
 
