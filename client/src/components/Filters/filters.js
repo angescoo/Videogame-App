@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
-import './filter.css'
+import './Filter.css'
 
 import { filterGame, getGame, getAllGames, orderByGenre, orderByCreator, getGenres, getPlatforms, orderByPlatform } from '../../actions/index.js'
-import Ordinances from '../Ordinances/ordinances.js'
+import Ordinances from '../Ordinances/Ordinances.js'
 
-export function Filtros(props) {
+export function Filters(props) {
 
 	const [input, setInput] = useState("")
 
@@ -97,4 +97,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filtros)
+export default connect(mapStateToProps, mapDispatchToProps)(Filters)

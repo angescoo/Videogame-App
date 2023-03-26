@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import {sort, sortRating, ASD, DES, HASD, HDES} from '../../actions/index.js';
 
-import './ordinances.css'
+import './Ordinances.css'
 
-export function Ordenamientos(props){
+export function Ordinances(props){
 
 	
 
@@ -73,4 +73,4 @@ function mapDispatchToProps(dispatch){
 		sortRating: (a, b) => dispatch(sortRating(a, b))
 	}}
 
-export default connect(mapStateToProps,mapDispatchToProps)(Ordenamientos)
+export default connect(mapStateToProps,mapDispatchToProps)(Ordinances)

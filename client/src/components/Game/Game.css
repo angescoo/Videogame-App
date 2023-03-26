@@ -1,0 +1,44 @@
+.imgGame {
+  height: 9.37rem;
+  width: 13rem;
+  border-radius: 1.25rem;
+}
+
+.genres {
+  visibility: hidden;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.card {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+
+}
+
+.favVg {
+  color: #FFFFFF;
+  background-color: transparent;
+  border: none;
+  font-size: 1.56rem;
+  align-self: flex-end;
+}
+
+
+.favVg:hover {
+  color: #dd000b;
+  font-weight: bolder;
+}
+
+.titleLink {
+  text-decoration: none;
+}

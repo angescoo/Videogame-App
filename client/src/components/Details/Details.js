@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getGameDetail } from '../../actions/index';
 
-import './detail.css'
+import './Details.css'
 
-function Detalles(props) {
+function Details(props) {
 
 	useEffect(() => {
 		const id = props.match.params.id;
@@ -93,4 +93,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Detalles)
+export default connect(mapStateToProps, mapDispatchToProps)(Details)

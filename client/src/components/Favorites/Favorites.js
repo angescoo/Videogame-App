@@ -4,7 +4,7 @@ import { removeGameFavorite } from "../../actions/index";
 import { Link } from 'react-router-dom';
 import './Favorites.css';
 
-export function ConnectedList(props) {
+export function Favorites(props) {
 
   return (
     <div className="divFavorite">
@@ -46,4 +46,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConnectedList);
+)(Favorites);

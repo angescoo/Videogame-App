@@ -5,9 +5,6 @@ import {
   SORT_RATING,
   FILTER_GAME,
   GET_GENRES,
-  SEARCH_GAME,
-  ORDER_BY_CREATOR,
-  ORDER_BY_GENRE,
   GET_PLATFORMS } from '../actions/index.js'
 
 

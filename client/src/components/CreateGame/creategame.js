@@ -4,7 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getAllGames, getGameDetail, getGenres, getPlatforms } from "../../actions/index.js";
 
-import "./creategame.css";
+import "./CreateGame.css";
 import { storage } from '../../firebase';
 
 export function CreateGame(props) {

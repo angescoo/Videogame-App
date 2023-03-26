@@ -12,7 +12,7 @@ export default function Pagination({ allVideogames, page, setPage }) {
 
     const pageData = allPages.map(p => {
         if (p === allPages[0] || p === allPages[allPages.length - 1]) {
-
+            return null
         }
         else if (p === page - 1 || p === page - 2 || p === page + 1 || p === page + 2) {
             return (

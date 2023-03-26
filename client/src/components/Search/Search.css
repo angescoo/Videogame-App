@@ -1,0 +1,104 @@
+.cnt {
+    padding-top: 0.8rem;
+}
+
+.form-container {
+    align-self: center;
+    margin: 1.2rem 2rem;
+    display: flex;
+}
+
+/* .form-container button {
+    margin-left: 20px;
+} */
+.label {
+    padding-right: 0.8rem;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.reset {
+    margin: auto;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    /* background-color: darkred; */
+    border-radius: 20px;
+}
+
+.reset:hover {
+    background-color: darkred;
+    cursor: pointer;
+}
+
+.btnSearch {
+    border-radius: 1.2rem;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    /* background-color: rgb(214, 148, 6); */
+    font-weight: bolder;
+}
+
+.btnSearch:hover {
+    background-color: rgb(214, 148, 6);
+    color: black;
+    cursor: pointer;
+}
+
+.inputSearch {
+    background-color: black;
+    border-radius: 1.2rem;
+    padding: 0.4rem;
+    color: white;
+
+}
+
+.inputSearch:focus {
+    outline: none;
+
+}
+
+.resultSearch {
+    /* background-color: black; */
+    align-self: center;
+    padding: 1.2rem;
+
+}
+
+.resultSearch:hover {
+    background-color: black;
+
+}
+
+.resultIndividual {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.resultIndividual button {
+    visibility: hidden;
+    background-color: green;
+}
+
+.resultIndividual:hover button {
+    visibility: visible;
+}
+
+.resultIndividual button:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+.resultIndividual:hover .linkResult {
+    color: orangered
+}
+
+.linkResult {
+    color: white;
+}

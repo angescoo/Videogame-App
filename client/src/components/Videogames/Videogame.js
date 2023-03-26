@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Games from '../Games/Games.js';
-import Pagination from '../Pagination/pagination.js';
-import Filtros from '../Filters/filters.js';
+import Games from '../Game/Game.js';
+import Pagination from '../Pagination/Pagination.js';
+import Filters from '../Filters/Filters.js';
 import { getGame, getAllGames, addGameFavorite, searchGame, resetSearch } from '../../actions/index.js'
 import './Videogame.css'
 
@@ -20,13 +20,9 @@ export function Videogame(props) {
     ? (vgames = props.videogames.slice(conteoInicial, conteoFinal))
     : (vgames = props.filteredVideogames.slice(conteoInicial, conteoFinal));
 
-
-  // const vgames = props.videogames.slice(conteoInicial, conteoFinal)
-
-
   useEffect(() => {
     props.getAllGames()
-  }, [])
+  }, [props])
 
   useEffect(() => {
     props.searchGame(title)
@@ -62,7 +58,6 @@ export function Videogame(props) {
         name={game.name}
         img={game.background_image}
         id={game.id}
-        // genres={generos.join(" ")}
         genres={game.genres}
       />
 
@@ -77,7 +72,6 @@ export function Videogame(props) {
         <div className="searchContainer">
           <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
             <div>
-
               <input
                 className="inputSearch"
                 placeholder="Search game"
@@ -92,7 +86,7 @@ export function Videogame(props) {
           </form>
         </div>
         <div className="ordContainer">
-          <Filtros></Filtros>
+          <Filters />
         </div>
 
         {/*---------------PAGINADO BOTONES------------------*/}
@@ -106,12 +100,6 @@ export function Videogame(props) {
         <div className="contenedor">
           <div className="gameDiv">
             <div className="videogame1">{videogameData}</div>
-          </div>
-
-          {/*---------------PAGINADO BOTONES------------------*/}
-
-          <div className="paginationBtns">
-            <Pagination allVideogames={props.filteredVideogames.length > 0 || props.filterBy !== 'All' ? props.filteredVideogames : props.videogames} page={numeroPagina} setPage={setNumeroPagina}></Pagination>
           </div>
         </div>
       </div>
